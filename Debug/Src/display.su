@@ -51,4 +51,4 @@ display.c:445:6:setZ	8	static
 display.c:458:6:displayNumber	16	static
 display.c:551:6:setDigit	16	static
 display.c:574:6:updateDisplay	24	static
-display.c:636:6:TIM3_IRQHandler	8	static
+display.c:760:6:TIM3_IRQHandler	8	static

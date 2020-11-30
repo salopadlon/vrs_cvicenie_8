@@ -610,6 +610,130 @@ void updateDisplay(void)
 			  setDigit(i);
 			  setNine();
 			  break;
+			case 'A':
+			  setDigit(i);
+			  setA();
+			  break;
+			case 'a':
+			  setDigit(i);
+			  seta();
+			  break;
+			case 'b':
+			  setDigit(i);
+			  setb();
+			  break;
+			case 'C':
+			  setDigit(i);
+			  setC();
+			  break;
+			case 'c':
+			  setDigit(i);
+			  setc();
+			  break;
+			case 'd':
+			  setDigit(i);
+			  setd();
+			  break;
+			case 'E':
+			  setDigit(i);
+			  setE();
+			  break;
+			case 'F':
+			  setDigit(i);
+			  setF();
+			  break;
+			case 'G':
+			  setDigit(i);
+			  setG();
+			  break;
+			case 'H':
+			  setDigit(i);
+			  setH();
+			  break;
+			case 'h':
+			  setDigit(i);
+			  seth();
+			  break;
+			case 'I':
+			  setDigit(i);
+			  setI();
+			  break;
+			case 'J':
+			  setDigit(i);
+			  setJ();
+			  break;
+			case 'L':
+			  setDigit(i);
+			  setL();
+			  break;
+			case 'n':
+			  setDigit(i);
+			  setn();
+			  break;
+			case 'O':
+			  setDigit(i);
+			  setO();
+			  break;
+			case 'o':
+			  setDigit(i);
+			  seto();
+			  break;
+			case 'P':
+			  setDigit(i);
+			  setP();
+			  break;
+			case 'q':
+			  setDigit(i);
+			  setq();
+			  break;
+			case 'r':
+			  setDigit(i);
+			  setr();
+			  break;
+			case 'S':
+			  setDigit(i);
+			  setS();
+			  break;
+			case 't':
+			  setDigit(i);
+			  sett();
+			  break;
+			case 'U':
+			  setDigit(i);
+			  setU();
+			  break;
+			case 'u':
+			  setDigit(i);
+			  setu();
+			  break;
+			case 'y':
+			  setDigit(i);
+			  sety();
+			  break;
+			case 'K':
+			  setDigit(i);
+			  setK();
+			  break;
+			case 'M':
+			  setDigit(i);
+			  setM();
+			  break;
+			case 'V':
+			  setDigit(i);
+			  setV();
+			  break;
+			case 'W':
+			  setDigit(i);
+			  setW();
+			  break;
+			case 'X':
+			  setDigit(i);
+			  setX();
+			  break;
+			case 'Z':
+			  setDigit(i);
+			  setZ();
+			  break;
 		}
 
 		if(dDisplayData.resolution == i)
