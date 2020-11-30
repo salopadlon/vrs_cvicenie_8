@@ -28,8 +28,10 @@ void SystemClock_Config(void);
 
 extern uint64_t disp_time;
 
-uint64_t saved_time;
-double num_to_display = 0;
+char string[] = "PAVEL_SAdLon_81677";
+char string_disp[4];
+uint8_t pos = 0;
+uint8_t backwards = 0;
 
 int main(void)
 {
@@ -55,17 +57,32 @@ int main(void)
 
   while (1)
   {
-	  if(disp_time > (saved_time + 100))
-	  {
-		  displayNumber(num_to_display);
-	  	  num_to_display -= 0.10;
-	  	  saved_time = disp_time;
+	  if(backwards) {
+		  for (uint8_t i = 0; i < 4; i++) {
+			  string_disp[i] = string[pos-2+i];
+		  }
 
-	  	  if(num_to_display <= 0)
-	  	  {
-	  		  num_to_display = 100;
-	  	  }
+		  --pos;
+
+		  if (pos <= 1) {
+			  backwards = 0;
+		  }
 	  }
+
+	  else {
+		  for (uint8_t i = 0; i < 4; i++) {
+			  string_disp[i] = string[pos+i];
+		  }
+
+		  ++pos;
+
+		  if (pos >= (sizeof(string)/sizeof(string[1])-4)) {
+			  backwards = 1;
+		  }
+	  }
+
+	  displayNumber(string_disp);
+	  LL_mDelay(500);
   }
 
 }

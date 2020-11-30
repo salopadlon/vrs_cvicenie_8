@@ -452,89 +452,27 @@ void setZ(void)
 	LL_GPIO_ResetOutputPin(SEGMENTG_PORT, SEGMENTG_PIN);
 }
 
+void setUnderscore(void)
+{
+	// D
+	LL_GPIO_ResetOutputPin(SEGMENTD_PORT, SEGMENTD_PIN);
+}
+
+
+
 /**
  * Pre-process number before it is displayed. Extract digits of the number
  */
-void displayNumber(double num)
+void displayNumber(char *text)
 {
 	uint8_t i = 0;
 
-	if(num < 0) return;
+	dDisplayData.digit_num = 4;
+	dDisplayData.negative = 0;
+	dDisplayData.resolution = 0;
 
-	if(num > 9999)
-	{
-		dDisplayData.digit_num = 4;
-		dDisplayData.negative = 0;
-		dDisplayData.resolution = 0;
-	}
-	else if(num >= 1000)
-	{
-		dDisplayData.digit_num = 4;
-		dDisplayData.resolution = 0;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-	else if(num >= 100)
-	{
-		dDisplayData.digit_num = 3;
-		dDisplayData.resolution = 1;
-
-		num = num * 10;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-	else if(num >= 10)
-	{
-		dDisplayData.digit_num = 2;
-		dDisplayData.resolution = 2;
-
-		num = num * 100;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-	else if(num >= 1)
-	{
-		dDisplayData.digit_num = 1;
-		dDisplayData.resolution = 3;
-
-		num = num * 1000;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
-	}
-	else if(num >= 0)
-	{
-		dDisplayData.digit_num = 1;
-		dDisplayData.resolution = 3;
-
-		num = num * 1000;
-		dDisplayData.digit[3] = 0;
-
-	    while(num > 1)
-	    {
-	    	dDisplayData.digit[i] = (uint32_t)num % 10;
-	        num = num / 10;
-	        i++;
-	    }
+	for (i = 0; i < 4; i++) {
+		dDisplayData.digit[i] = *text++;
 	}
 }
 
@@ -545,16 +483,16 @@ void setDigit(uint8_t pos)
 {
 	switch(pos)
 	{
-		case 0:
+		case 3:
 			DIGIT_4_ON;
 			break;
-		case 1:
+		case 2:
 			DIGIT_3_ON;
 			break;
-		case 2:
+		case 1:
 			DIGIT_2_ON;
 			break;
-		case 3:
+		case 0:
 			DIGIT_1_ON;
 			break;
 	}
@@ -570,43 +508,43 @@ void updateDisplay(void)
 	{
 		switch(dDisplayData.digit[i])
 		{
-			case 0:
+			case '0':
 			  setDigit(i);
 			  setZero();
 			  break;
-			case 1:
+			case '1':
 			  setDigit(i);
 			  setOne();
 			  break;
-			case 2:
+			case '2':
 			  setDigit(i);
 			  setTwo();
 			  break;
-			case 3:
+			case '3':
 			  setDigit(i);
 			  setThree();
 			  break;
-			case 4:
+			case '4':
 			  setDigit(i);
 			  setFour();
 			  break;
-			case 5:
+			case '5':
 			  setDigit(i);
 			  setFive();
 			  break;
-			case 6:
+			case '6':
 			  setDigit(i);
 			  setSix();
 			  break;
-			case 7:
+			case '7':
 			  setDigit(i);
 			  setSeven();
 			  break;
-			case 8:
+			case '8':
 			  setDigit(i);
 			  setEight();
 			  break;
-			case 9:
+			case '9':
 			  setDigit(i);
 			  setNine();
 			  break;
@@ -733,6 +671,10 @@ void updateDisplay(void)
 			case 'Z':
 			  setDigit(i);
 			  setZ();
+			  break;
+			case '_':
+			  setDigit(i);
+			  setUnderscore();
 			  break;
 		}
 

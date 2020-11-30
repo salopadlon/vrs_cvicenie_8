@@ -64,4 +64,4 @@ void setEight(void);
 void setNine(void);
 void setZero(void);
 
-void displayNumber(double num);
+void displayNumber(char *text);
